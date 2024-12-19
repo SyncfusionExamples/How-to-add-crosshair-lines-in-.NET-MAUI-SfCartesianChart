@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AddCrossHairToMAUIChart.WithGraphicsView"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:AddCrossHairToMAUIChart"
+             xmlns:crossHair="clr-namespace:AddCrossHairToMAUIChart.UsingGraphicsView"
+             Title="WithGraphicsView">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <chart:SfCartesianChart ZIndex="2">
+
+        <chart:SfCartesianChart.Title>
+            <Label Text="CrossHair with Graphics View and Chart Interaction" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </chart:SfCartesianChart.Title>
+
+        <chart:SfCartesianChart.PlotAreaBackgroundView>
+            <crossHair:CrossHairBehavior ShowCrossHair="True" ZIndex="1" InputTransparent="True"/>
+        </chart:SfCartesianChart.PlotAreaBackgroundView>
+
+        <chart:SfCartesianChart.XAxes>
+            <chart:NumericalAxis ShowMajorGridLines="False" EdgeLabelsDrawingMode="Center">
+            </chart:NumericalAxis>
+        </chart:SfCartesianChart.XAxes>
+
+        <chart:SfCartesianChart.YAxes>
+            <chart:NumericalAxis Interval="5" EdgeLabelsDrawingMode="Center" Maximum="33" ShowTrackballLabel="True"/>
+        </chart:SfCartesianChart.YAxes>
+
+        <chart:SfCartesianChart.InteractiveBehavior>
+            <crossHair:CrossHairInteractiveBehavior/>
+        </chart:SfCartesianChart.InteractiveBehavior>
+
+        <chart:SplineAreaSeries ItemsSource="{Binding Data}" XBindingPath="Number" YBindingPath="High" Label="Temperatue Variation" Fill="#18c1f5"/>
+    </chart:SfCartesianChart>
+    
+</ContentPage>

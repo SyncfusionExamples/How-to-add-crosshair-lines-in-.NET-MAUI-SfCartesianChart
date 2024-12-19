@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AddCrossHairToMAUIChart.WithAnnotation"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:AddCrossHairToMAUIChart"
+             xmlns:crossHair="clr-namespace:AddCrossHairToMAUIChart.UsingAnnotations"
+             Title="WithAnnotation">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <chart:SfCartesianChart x:Name="chart">
+
+        <chart:SfCartesianChart.Title>
+            <Label Text="CrossHair with Annotations and Chart Interaction" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </chart:SfCartesianChart.Title>
+
+        <chart:SfCartesianChart.XAxes>
+            <chart:NumericalAxis ShowMajorGridLines="False" EdgeLabelsDrawingMode="Center" x:Name="xAxis">
+            </chart:NumericalAxis>
+        </chart:SfCartesianChart.XAxes>
+
+        <chart:SfCartesianChart.YAxes>
+            <chart:NumericalAxis Interval="5" EdgeLabelsDrawingMode="Center" Maximum="33" ShowTrackballLabel="True" x:Name="yAxis" LabelExtent="30"/>
+        </chart:SfCartesianChart.YAxes>
+
+        <chart:SfCartesianChart.InteractiveBehavior>
+            <crossHair:CrossHairInteractiveBehavior TouchMoveEvent="CrossHairInteractiveBehavior_TouchMoveEvent"/>
+        </chart:SfCartesianChart.InteractiveBehavior>
+
+        <chart:SfCartesianChart.Annotations>
+            <chart:HorizontalLineAnnotation x:Name="Horizontal" ShowAxisLabel="False">
+                <chart:HorizontalLineAnnotation.AxisLabelStyle>
+                    <chart:ChartAxisLabelStyle Background="Orange"></chart:ChartAxisLabelStyle>
+                </chart:HorizontalLineAnnotation.AxisLabelStyle>
+            </chart:HorizontalLineAnnotation>
+            <chart:VerticalLineAnnotation x:Name="Vertical" ShowAxisLabel="False">
+                <chart:VerticalLineAnnotation.AxisLabelStyle>
+                    <chart:ChartAnnotationLabelStyle LabelFormat="0.##" Background="Orange"/>
+                </chart:VerticalLineAnnotation.AxisLabelStyle>
+            </chart:VerticalLineAnnotation>
+        </chart:SfCartesianChart.Annotations>
+
+        <chart:SplineAreaSeries ItemsSource="{Binding Data}" XBindingPath="Number" YBindingPath="High" Label="Temperatue Variation" Fill="#18c1f5"/>
+        
+    </chart:SfCartesianChart>
+</ContentPage>
