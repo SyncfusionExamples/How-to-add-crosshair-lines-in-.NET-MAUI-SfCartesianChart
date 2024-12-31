@@ -12,10 +12,6 @@
 
     <chart:SfCartesianChart x:Name="chart">
 
-        <chart:SfCartesianChart.Title>
-            <Label Text="CrossHair with Annotations and Chart Interaction" HorizontalOptions="Center" VerticalOptions="Center"/>
-        </chart:SfCartesianChart.Title>
-
         <chart:SfCartesianChart.XAxes>
             <chart:NumericalAxis ShowMajorGridLines="False" EdgeLabelsDrawingMode="Center" x:Name="xAxis">
             </chart:NumericalAxis>
