@@ -8,7 +8,7 @@ In this method, Annotations are used alongside ChartInteractiveBehavior to dynam
 ## Output
 Both methods dynamically render crosshair lines that follow the user's touch, improving the chart's interactivity and making it easier to analyze data points on the chart.
 
-[CrossHair in .NET MAUI SfCartesianChart](https://github.com/user-attachments/assets/49c574ff-dae7-499e-a13b-c47e80b6d353)
+[CrossHair in .NET MAUI SfCartesianChart](https://github.com/user-attachments/assets/520c089e-6553-4b64-ac0d-8299e05e746c)
 
 ## Troubleshooting
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
