@@ -13,4 +13,4 @@ Both methods dynamically render crosshair lines that follow the user's touch, im
 ## Troubleshooting
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
 
-For a step-by-step procedure, refer to the [How to add crosshair lines in the .NET MAUI Chart(SfCartesianChart)? KB article](https://support.syncfusion.com/kb/article/15639).
+For a step-by-step procedure, refer to the [How to add crosshair lines in the .NET MAUI Chart(SfCartesianChart)? KB article](https://support.syncfusion.com/kb/article/15639/how-to-add-crosshair-lines-in-the-net-maui-chart-sfcartesianchart).
