@@ -1,4 +1,4 @@
-# How-to-add-crosshair-lines-in-.NET-MAUI-SfCartesianChart
+# How to add crosshair lines in .NET-MAUI SfCartesianChart
 This repository demonstrates how to add crosshair lines to a .NET MAUI Cartesian Chart, making it easier for users to analyze data. The crosshair lines are dynamically updated based on user touch interaction with the chart. Two methods are provided for implementing this feature: using GraphicsView with ChartInteractiveBehavior and using Annotations with ChartInteractiveBehavior.
 ## Methods to Add Crosshair Lines
 ### 1. Using GraphicsView with ChartInteractiveBehavior
@@ -10,5 +10,7 @@ Both methods dynamically render crosshair lines that follow the user's touch, im
 
 [CrossHair in .NET MAUI SfCartesianChart](https://github.com/user-attachments/assets/49c574ff-dae7-499e-a13b-c47e80b6d353)
 
+## Troubleshooting
+If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
 
-
+For a step-by-step procedure, refer to the [How to add crosshair lines in the .NET MAUI Chart(SfCartesianChart)? KB article](https://support.syncfusion.com/kb/article/15639).
