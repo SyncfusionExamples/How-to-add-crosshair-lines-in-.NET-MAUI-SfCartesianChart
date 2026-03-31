@@ -1,16 +1,192 @@
-# How to add crosshair lines in .NET-MAUI SfCartesianChart
-This repository demonstrates how to add crosshair lines to a .NET MAUI Cartesian Chart, making it easier for users to analyze data. The crosshair lines are dynamically updated based on user touch interaction with the chart. Two methods are provided for implementing this feature: using GraphicsView with ChartInteractiveBehavior and using Annotations with ChartInteractiveBehavior.
-## Methods to Add Crosshair Lines
-### 1. Using GraphicsView with ChartInteractiveBehavior
-In this approach, we use a combination of GraphicsView and ChartInteractiveBehavior to render the crosshair lines based on the user's touch position.
-### 2. Using Annotations with ChartInteractiveBehavior
-In this method, Annotations are used alongside ChartInteractiveBehavior to dynamically position the crosshair lines on the chart, updating them as the user interacts.
-## Output
-Both methods dynamically render crosshair lines that follow the user's touch, improving the chart's interactivity and making it easier to analyze data points on the chart.
 
-[CrossHair in .NET MAUI SfCartesianChart](https://github.com/user-attachments/assets/520c089e-6553-4b64-ac0d-8299e05e746c)
+In this article, we will demonstrate how to add a crosshair to the [.NET MAUI Chart (SfCartesianChart)](https://www.syncfusion.com/maui-controls/maui-cartesian-charts) and how to customize it for better data analysis. 
 
-## Troubleshooting
-If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
+A [crosshair ](https://help.syncfusion.com/maui/cartesian-charts/crosshair) helps users to identify exact data values by displaying vertical and horizontal lines at the interaction point. On mobile devices, long‑press the chart to display the crosshair and drag to adjust its position. On desktop, simply move the cursor over the chart area to view the crosshair.
 
-For a step-by-step procedure, refer to the [How to add crosshair lines in the .NET MAUI Chart(SfCartesianChart)? KB article](https://support.syncfusion.com/kb/article/15639/how-to-add-crosshair-lines-in-the-net-maui-chart-sfcartesianchart).
+The following steps explain how to add a crosshair to the Cartesian chart.
+##### Step 1: Configure the SfCartesianChart
+Begin by setting up the Syncfusion® .NET MAUI SfCartesianChart in your application. If this is your first time using the chart, refer to the Syncfusion [ Getting Started documentation](https://help.syncfusion.com/maui/cartesian-charts/getting-started) to configure the chart with the necessary data, axes, and basic elements.
+
+##### Step 2: Enable the Crosshair
+To enable the crosshair in the chart, create an instance of [ChartCrosshairBehavior](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ChartCrosshairBehavior.html#Syncfusion_Maui_Charts_ChartCrosshairBehavior__ctor) and assign it to the [CrosshairBehavior ](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html#Syncfusion_Maui_Charts_SfCartesianChart_CrosshairBehavior) property of the SfCartesianChart. This activates the crosshair overlay, allowing users to view precise values when interacting with the chart.
+
+**[XAML]**
+ ```xml
+<chart:SfCartesianChart>
+    ...
+    <chart:SfCartesianChart.CrosshairBehavior>
+        <chart:ChartCrosshairBehavior/>
+    </chart:SfCartesianChart.CrosshairBehavior>
+    ...
+</chart:SfCartesianChart> 
+ ```
+
+**[C#]**
+ ```csharp
+SfCartesianChart chart = new SfCartesianChart();
+...
+ChartCrosshairBehavior crosshair = new ChartCrosshairBehavior();
+chart.CrosshairBehavior = crosshair;
+...
+this.Content = chart; 
+ ```
+
+
+##### Step 3: Show Crosshair Axis Labels
+To display axis labels when the crosshair is active, set the [ShowTrackballLabel](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ChartAxis.html#Syncfusion_Maui_Charts_ChartAxis_ShowTrackballLabel) property of the corresponding axis to true. By default, the ChartAxis.ShowTrackballLabel property is set to **false**. Enabling this option allows users to clearly view the exact axis values at the crosshair position.
+
+**[XAML]**
+ ```xml
+<chart:SfCartesianChart>
+    ...
+    <chart:SfCartesianChart.CrosshairBehavior>
+        <chart:ChartCrosshairBehavior/>
+    </chart:SfCartesianChart.CrosshairBehavior> 
+   
+    <chart:SfCartesianChart.XAxes>
+        <chart:CategoryAxis ShowTrackballLabel="True"/>
+    </chart:SfCartesianChart.XAxes>
+
+    <chart:SfCartesianChart.YAxes>
+        <chart:NumericalAxis ShowTrackballLabel="True"/>
+    </chart:SfCartesianChart.YAxes>
+    ...
+</chart:SfCartesianChart> 
+ ```
+
+**[C#]**
+ ```csharp
+SfCartesianChart chart = new SfCartesianChart();
+...
+ChartCrosshairBehavior crosshair = new ChartCrosshairBehavior();
+chart.CrosshairBehavior = crosshair;
+
+CategoryAxis chartXAxis = new CategoryAxis()
+{
+    ShowTrackballLabel = true
+};
+
+NumericalAxis chartYAxis = new NumericalAxis()
+{
+    ShowTrackballLabel = true
+};
+chart.XAxes.Add(chartXAxis);
+chart.YAxes.Add(chartYAxis);
+...
+this.Content = chart; 
+ ```
+
+##### Output
+The following screenshot illustrates how the crosshair appears on the Cartesian chart, helping users easily identify precise data values and corresponding axis labels at the selected interaction point.
+
+##### Step 4: Customize Crosshair Lines
+When ChartCrosshairBehavior is added, vertical and horizontal lines are shown by default. We can customize them using the **VerticalLineStyle** and **HorizontalLineStyle** properties. Key properties include:
+
+**Stroke** – Crosshair line color
+**StrokeWidth** – Crosshair line thickness
+**StrokeDashArray** – Crosshair dashed line pattern
+ 
+**[XAML]**
+ ```xml
+<chart:SfCartesianChart>
+    . . .
+    <chart:SfCartesianChart.CrosshairBehavior>
+        <chart:ChartCrosshairBehavior>
+            <chart:ChartCrosshairBehavior.HorizontalLineStyle>
+                 <chart:ChartLineStyle 
+                    Stroke="Red" 
+                    StrokeWidth="2"
+                    StrokeDashArray="2,2"/>
+            </chart:ChartCrosshairBehavior.HorizontalLineStyle>
+            <chart:ChartCrosshairBehavior.VerticalLineStyle>
+                 <chart:ChartLineStyle 
+                    Stroke="Blue" 
+                    StrokeWidth="2"
+                    StrokeDashArray="5,3"/>
+            </chart:ChartCrosshairBehavior.VerticalLineStyle>
+        </chart:ChartCrosshairBehavior>
+    </chart:SfCartesianChart.CrosshairBehavior>
+    ...
+</chart:SfCartesianChart> 
+ ```
+
+**[C#]**
+ ```csharp
+SfCartesianChart chart = new SfCartesianChart();
+...
+ChartCrosshairBehavior crosshair = new ChartCrosshairBehavior();
+chart.CrosshairBehavior = crosshair;
+
+DoubleCollection doubleCollection1 = new DoubleCollection();
+doubleCollection1.Add(2);
+doubleCollection1.Add(2);
+
+ChartLineStyle horizontalLineStyle = new ChartLineStyle()
+{
+    Stroke = Colors.Red,
+    StrokeWidth = 2,
+    StrokeDashArray = doubleCollection1
+};
+
+crosshair.HorizontalLineStyle = horizontalLineStyle;
+
+DoubleCollection doubleCollection2 = new DoubleCollection();
+doubleCollection2.Add(5);
+doubleCollection2.Add(3);
+
+ChartLineStyle verticalLineStyle = new ChartLineStyle()
+{
+    Stroke = Colors.Blue,
+    StrokeWidth = 2,
+    StrokeDashArray = doubleCollection2
+};
+crosshair.VerticalLineStyle = verticalLineStyle;
+...
+this.Content = chart; 
+ ```
+
+##### Step 5: Customize Crosshair Axis Labels
+We can customize the appearance of crosshair axis labels using the **LabelStyle** property.
+
+**[XAML]**
+ ```xml
+<chart:SfCartesianChart>
+    ...
+    <chart:CategoryAxis>
+        <chart:CategoryAxis.TrackballLabelStyle>
+            <chart:ChartAxisLabelStyle Background="LightBlue"   
+                                       FontSize="15" 
+                                       CornerRadius="5"
+                                       StrokeWidth="2" 
+                                       Stroke="Gray"/>
+        </chart:CategoryAxis.TrackballLabelStyle>
+    </chart:CategoryAxis>
+    ...
+</chart:SfCartesianChart> 
+ ```
+
+**[C#]**
+ ```csharp
+SfCartesianChart chart = new SfCartesianChart();
+. . .
+ChartCrosshairBehavior crosshair = new ChartCrosshairBehavior();
+chart.CrosshairBehavior = crosshair;
+
+CategoryAxis categoryAxis = new CategoryAxis();
+ChartAxisLabelStyle axisLabelStyle = new ChartAxisLabelStyle()
+{
+    Background = Colors.LightBlue,
+    FontSize = 15,
+    CornerRadius = 5,
+    StrokeWidth = 2,
+    Stroke = Colors.Gray
+};
+categoryAxis.TrackballLabelStyle = axisLabelStyle;
+. . .
+this.Content = chart; 
+ ```
+
+##### Output
+The following screenshot demonstrates the result of the axis label and line customization applied to the crosshair in the Cartesian chart.
+
+Download the complete sample from [GitHub](https://github.com/SyncfusionExamples/How-to-add-crosshair-lines-in-.NET-MAUI-SfCartesianChart).
