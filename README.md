@@ -1,3 +1,4 @@
+# How to add crosshair in .NET-MAUI SfCartesianChart and its customization
 
 In this article, we will demonstrate how to add a crosshair to the [.NET MAUI Chart (SfCartesianChart)](https://www.syncfusion.com/maui-controls/maui-cartesian-charts) and how to customize it for better data analysis. 
 
@@ -78,6 +79,8 @@ this.Content = chart;
 
 ##### Output
 The following screenshot illustrates how the crosshair appears on the Cartesian chart, helping users easily identify precise data values and corresponding axis labels at the selected interaction point.
+
+ ![Crosshair](https://support.syncfusion.com/kb/agent/attachment/article/15639/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjcwIiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.Rm9fqmZEqzAoBz1b26KT0eqPhMBVSJbl_710CG9uhAc)
 
 ##### Step 4: Customize Crosshair Lines
 When ChartCrosshairBehavior is added, vertical and horizontal lines are shown by default. We can customize them using the **VerticalLineStyle** and **HorizontalLineStyle** properties. Key properties include:
@@ -189,4 +192,9 @@ this.Content = chart;
 ##### Output
 The following screenshot demonstrates the result of the axis label and line customization applied to the crosshair in the Cartesian chart.
 
-Download the complete sample from [GitHub](https://github.com/SyncfusionExamples/How-to-add-crosshair-lines-in-.NET-MAUI-SfCartesianChart).
+ ![Crosshair customization](https://support.syncfusion.com/kb/agent/attachment/article/15639/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjY5Iiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.axyg0Rljb4yFPb-KHsS5gmasa181Pu3xpdCsPa3J9ek)
+ 
+## Troubleshooting
+If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
+
+For a step-by-step procedure, refer to the [How to add crosshair lines in the .NET MAUI Chart(SfCartesianChart)? KB article](https://support.syncfusion.com/kb/article/15639/how-to-add-crosshair-lines-in-the-net-maui-chart-sfcartesianchart).
